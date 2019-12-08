@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +19,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-
   final String title;
 
   @override
@@ -30,19 +28,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
 
   final List<Tab> tabs = <Tab>[
-    Tab(
-      text: 'One',
-    ),
-    Tab(
-      text: "Two",
-    ),
-    Tab(
-      text: "Three",
-    ),
-    Tab(
-      text: "Four",
-    )
+    Tab(text: 'One'),
+    Tab(text: "Two"),
+    Tab(text: "Three"),
+    Tab(text: "Four")
   ];
+
   TabController _tabController;
 
   @override
@@ -82,10 +73,22 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   }
 
   Widget _createTab(Tab tab){
-    return Center(
-      child: Text("10 min Rest Time" , style: TextStyle(
-        fontSize: 24.0
-      ),),
-    );
+
+    const data = [
+      "hoge", "huga", "fizz", "buzz", "hoge", "huga", "fizz", "buzz", "hoge", "huga", "fizz", "buzz", "hoge", "huga", "fizz", "buzz", "hoge", "huga", "fizz", "buzz"
+    ];
+
+    return ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, int index) {
+          return Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Center(
+                child: Text(data[index], 
+                style: TextStyle(fontSize: 24.0))
+              )
+          );
+        }
+      );
   }
 }
